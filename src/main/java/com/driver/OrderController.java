@@ -16,18 +16,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("orders")
+@RequestMapping("/orders")
 public class OrderController {
 @Autowired OrderServiceLayer orderServiceLayerObj;
 
     @PostMapping("/add-order")
     public ResponseEntity<String> addOrder(@RequestBody Order order){
 
-
-
         orderServiceLayerObj.addOrder(order);  // add a order to that particular orderId
 
         return new ResponseEntity<>("New order added successfully", HttpStatus.CREATED);
+
     }
 
     @PostMapping("/add-partner/{partnerId}")
